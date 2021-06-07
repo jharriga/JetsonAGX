@@ -33,5 +33,5 @@ sleep 3
 #
 echo "> If successfully put in forced recovery mode, then lsusb should return:"
 echo ">    Bus <bbb> Device <ddd>: ID 0955:7019 Nvidia Corp."
-echo -n "  lsusb returned: "
+echo -n "     lsusb returned: "
 lsusb | grep -i nvidia

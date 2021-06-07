@@ -12,8 +12,8 @@
 #--------------------------------------------------------------------
 
 # Notify user
-echo "Issuing button press sequence to put Jetson AGX into RCM mode"
-echo "please wait ~15 sec ..."
+echo "> Issuing button press sequence to put Jetson AGX into RCM mode"
+echo "> ... please wait ~15 sec ..."
 
 # Ensure AGX is powered-off
 jetson-control press power
@@ -31,7 +31,7 @@ jetson-control release recovery
 sleep 3
 # should display
 #
-echo "If successfully put in forced recovery mode, then lsusb should return:"
-echo "    Bus <bbb> Device <ddd>: ID 0955:7019 Nvidia Corp."
-echo -n "lsusb returned: "
+echo "> If successfully put in forced recovery mode, then lsusb should return:"
+echo ">    Bus <bbb> Device <ddd>: ID 0955:7019 Nvidia Corp."
+echo -n "> lsusb returned: "
 lsusb | grep -i nvidia

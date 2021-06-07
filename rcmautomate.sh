@@ -31,6 +31,7 @@ jetson-control release recovery
 sleep 3
 # should display
 #
-echo "If successfully put in forced recovery mode, then lsusb should return Bus <bbb> Device <ddd>: ID 0955: 7019 Nvidia Corp."
+echo "If successfully put in forced recovery mode, then lsusb should return:"
+echo "    Bus <bbb> Device <ddd>: ID 0955:7019 Nvidia Corp."
 echo -n "lsusb returned: "
 lsusb | grep -i nvidia

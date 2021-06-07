@@ -1,0 +1,26 @@
+# Test jetson-control for AGX access
+#   podman build --tag devices -f ./DockerfileDEVICES
+#   podman run -it --privileged devices
+#    > jetson-control devices output:
+#    > Bus 001 Device 004: ID 0403:6011: Quad RS232-HS
+#########################################################
+FROM ubuntu:18.04
+
+# install usbutils, git and python
+RUN apt-get update -y && apt install -y \
+  usbutils \
+  git \
+  python3 \
+  python3-pip
+
+# Install python-jetson Utilities and dependency (pyftdi)
+RUN pip3 install pyftdi
+RUN git clone https://github.com/NVIDIA/python-jetson && \
+  cd python-jetson && \
+  python3 setup.py install
+
+# Execute jetson-control cmd
+CMD echo "'jetson-control devices' output:" && \
+  jetson-control devices && \
+  echo "'lsusb | grep -i nvidia' output:" && \
+  lsusb | grep -i nvidia

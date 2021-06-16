@@ -1,0 +1,45 @@
+# Put AGX in forced recovery mode to allow flashing firmware
+# USAGE:
+#   podman build --tag rcm -f ./DockerfileRCM
+#   podman run -it --privileged rcm
+# OUTPUT:
+#   Performing 'git pull' of latest JetsonAGX/rcmautomate.sh
+#   Executing /JetsonAGX/rcmautomate.sh script
+#   > Issuing button press sequence to put Jetson AGX into RCM mode
+#   > ... please wait ~15 sec ...
+#   > If successfully put in forced recovery mode, then lsusb should return:
+#   >    Bus <bbb> Device <ddd>: ID 0955:7019 Nvidia Corp.
+#     lsusb returned: Bus 001 Device 005: ID 0955:7019 NVidia Corp. 
+#   'jetson-control devices' output:
+#        Bus 001 Device 004: ID 0403:6011: Quad RS232-HS
+#
+#   John Harrigan         June 10, 2021
+#########################################################
+FROM ubuntu:18.04
+
+# Install usbutils, git and python3
+RUN apt-get update -y && apt install -y \ 
+  usbutils \
+  git \
+  python3 \
+  python3-pip 
+
+# Install python-jetson Utilities and dependency (pyftdi)
+RUN pip3 install pyftdi
+RUN git clone https://github.com/NVIDIA/python-jetson && \
+  cd python-jetson && \
+  python3 setup.py install
+
+# Clone JetsonAGX repo and apply force-recovery-mode button sequence
+RUN git clone https://github.com/jharriga/JetsonAGX
+
+# Execute rcmautomate.sh and jetson-control cmds
+CMD echo "Putting AGX in forced recovery mode" && \
+  echo "Performing 'git pull' of latest JetsonAGX/rcmautomate.sh" && \
+  cd /JetsonAGX && \
+  git pull > /dev/null 2>&1 && \
+  echo "Executing /JetsonAGX/rcmautomate.sh script" && \
+  bash /JetsonAGX/rcmautomate.sh && \
+  echo "'jetson-control devices' output:" && \
+  echo -n "     " && \
+  jetson-control devices

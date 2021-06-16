@@ -1,0 +1,16 @@
+# Test LSUSB for AGX access 
+# podman build --tag lsusb -f ./DockerfileLSUSB
+# podman run lsusb
+###########################################################
+FROM ubuntu:18.04
+#COPY . /app
+#RUN make /app
+#CMD python /app/app.py
+################################
+
+# install usbutils
+RUN apt-get update -y && apt install -y \
+  usbutils 
+
+# This should find the Nvidia AGX device
+CMD echo "lsusb -t ouput:" && lsusb -t

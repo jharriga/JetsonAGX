@@ -1,7 +1,7 @@
 # Reinstall NVIDIA AGX Factory JetPack software (Ubuntu 18.04)
 # Requires AGX already be in forced recovery mode
 #   podman build --tag factory -f ./DockerfileFACTORY
-#   podman run -it --privileged factory
+#   podman run --rm -it -v /dev:/dev --device-cgroup-rule='c 188:* rmw' --privileged factory
 # *Sample output*
 # [ 324.0653 ] 
 # *** The target t186ref has been flashed successfully. ***

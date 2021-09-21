@@ -9,6 +9,7 @@ Dependencies: python, https://github.com/NVIDIA/python-jetson
 
 SCRIPTS:
 * rcmautomate.sh - issues button presses to put system in Forced Recovery Mode
+* ttyUSB2.sh - connects to AGX using minicom
 
 DOCKERFILES:
 * DockerfileDEVICES - uses jetson-control utils to identify attached AGX

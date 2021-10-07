@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install NVIDIA Jetson AGX factory software (r32.5.1)
+# Install NVIDIA Jetson AGX factory software
 # Called by DockerfileFACTORY
 ##################################################
 

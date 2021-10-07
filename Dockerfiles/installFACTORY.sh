@@ -17,13 +17,17 @@ fi
 # Phase 2: Download NVIDIA packages
 cd /
 echo "Downloading NVIDIA tarballs - please be patient..."
-wget https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/t186/tegra186_linux_r32.5.1_aarch64.tbz2
-wget https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/t186/tegra_linux_sample-root-filesystem_r32.5.1_aarch64.tbz2
+# UPDATE for L4T of your choice
+#wget https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/t186/tegra186_linux_r32.5.1_aarch64.tbz2
+#wget https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/t186/tegra_linux_sample-root-filesystem_r32.5.1_aarch64.tbz2
+# Updated Oct 2021 to use v32.6.1
+wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t186/jetson_linux_r32.6.1_aarch64.tbz2
+wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t186/tegra_linux_sample-root-filesystem_r32.6.1_aarch64.tbz2
 
 # Phase 2: extract tarballs
 echo "Extracting NVIDIA tarballs - please be patient..."
-tar xf /tegra186_linux_r32.5.1_aarch64.tbz2 -C /
-tar xpf /tegra_linux_sample-root-filesystem_r32.5.1_aarch64.tbz2 \
+tar xf /jetson_linux_*_aarch64.tbz2 -C /
+tar xpf /tegra_linux_sample-root-filesystem_*_aarch64.tbz2 \
   -C /Linux_for_Tegra/rootfs
 
 # Phase 3: apply binaries (requires Ubuntu 18.04 env with qemu)

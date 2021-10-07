@@ -10,7 +10,7 @@ SHELL SCRIPTS:
 * ttyUSB2.sh - connects to Jetson AGX sytem using minicom terminal utility
 * Dependencies: python3, https://github.com/NVIDIA/python-jetson
 
-DOCKERFILES:
+DOCKERFILES:  <-- see each 'Dockerfile' for build and run instructions
 * DockerfileDEVICES - uses jetson-control utils to identify USB attached Jetson AGX
 * DockerfileFACTORY - flashes AGX with NVIDIA Factory Ubuntu bits (installFACTORY.sh)
 * DockerfileLSUSB - probes USB looking for attached Jetson AGX

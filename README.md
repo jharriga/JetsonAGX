@@ -1,7 +1,7 @@
 # JetsonAGX
 Scripts and Dockerfiles for working with NVIDIA Jetson AGX Development kit
 
-NOTE: both Jetson AGX USB ports must be connected to an x86 based Linux system
+NOTE: requires an x86-based Linux system with both Jetson AGX USB ports connected
 
 Nvidia L4T download area  https://developer.nvidia.com/embedded/linux-tegra
 

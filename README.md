@@ -8,7 +8,7 @@ Nvidia L4T download area  https://developer.nvidia.com/embedded/linux-tegra
 SHELL SCRIPTS:
 * rcmautomate.sh - issues button presses to put Jetson AGX in Forced Recovery Mode
 * ttyUSB2.sh - connects to Jetson AGX sytem using minicom terminal utility
-* Dependencies: python, https://github.com/NVIDIA/python-jetson
+* Dependencies: python3, https://github.com/NVIDIA/python-jetson
 
 DOCKERFILES:
 * DockerfileDEVICES - uses jetson-control utils to identify USB attached Jetson AGX

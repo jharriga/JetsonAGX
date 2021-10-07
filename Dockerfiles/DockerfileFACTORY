@@ -33,7 +33,7 @@ ADD installFACTORY.sh /
 RUN chmod +x /installFACTORY.sh
 
 # Required for flash.sh which is called within ./installFACTORY.sh 
-RUN apt install python-is-python3
+ln -s /usr/bin/python3 /usr/bin/python
 ENV USER=root
 
 # should this be ENTRYPOINT or CMD?

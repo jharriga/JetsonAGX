@@ -28,11 +28,12 @@ RUN apt-get update -y && apt-get install -y \
 ##RUN wget https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/t186/tegra186_linux_r32.5.1_aarch64.tbz2
 ##RUN wget https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/t186/tegra_linux_sample-root-filesystem_r32.5.1_aarch64.tbz2
 
-# Script verifies AGX is in RCM, then installs NVIDIA Factory Software
+# Script verifies AGX is in RCM, then downloads and installs NVIDIA Factory Software
 ADD installFACTORY.sh /
 RUN chmod +x /installFACTORY.sh
 
 # Required for flash.sh which is called within ./installFACTORY.sh 
+RUN apt install python-is-python3
 ENV USER=root
 
 # should this be ENTRYPOINT or CMD?

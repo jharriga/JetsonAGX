@@ -11,10 +11,11 @@ SHELL SCRIPTS:
 * Dependencies: python3, https://github.com/NVIDIA/python-jetson
 
 DOCKERFILES:  <-- see each 'Dockerfile' for build and run instructions
-* DockerfileDEVICES - uses jetson-control utils to identify USB attached Jetson AGX
-* DockerfileFACTORY - flashes AGX with NVIDIA Factory Ubuntu bits (installFACTORY.sh)
-* DockerfileLSUSB - probes USB looking for attached Jetson AGX
-* DockerfileRCM - Places USB attached Jetson AGX into recovery mode (for flashing)
+* ORDER OF EXECUTION - to flash Jetson AGX to Nvidia L4T software
+* 1) DockerfileDEVICES - uses jetson-control utils to identify USB attached Jetson AGX
+* 2) DockerfileRCM - Places USB attached Jetson AGX into recovery mode (for flashing)
+* 3) DockerfileFACTORY - flashes AGX with NVIDIA Factory Ubuntu bits (installFACTORY.sh)
+* (optional) DockerfileLSUSB - probes USB looking for attached Jetson AGX
 
 EXTERNAL RESOURCES
 * Hardware configuration video  https://www.youtube.com/watch?v=-nX8eD7FusQ

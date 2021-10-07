@@ -14,7 +14,7 @@ RUN apt-get update -y && apt install -y \
   python3-pip
 
 # link python3 so /usr/bin/env python works in Nvidia scripting
-ln -s /usr/bin/python3 /usr/bin/python
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Install python-jetson Utilities and dependency (pyftdi)
 RUN pip3 install pyftdi

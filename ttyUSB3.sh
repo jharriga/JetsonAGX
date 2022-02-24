@@ -2,7 +2,7 @@
 #
 # Configures serial port and starts minicom term emulator
 
-port="/dev/ttyUSB2"
+port="/dev/ttyUSB3"
 
 # check if port exists (character device)
 if [ -c "$port" ]; then

@@ -6,11 +6,12 @@ NOTE: requires an x86-based Linux system with Jetson AGX USB ports connected
 FROM NVIDIA L4T Quickstart Guide:
 * Your Jetson developer kit is powered off, and is connected as follows
 * A USB cable connects the correct USB port on your Jetson developer kit to a host computer to be used for flashing and other development support functions.
-* For the NVIDIA Jetson AGX Xavier Developer Kit, use the USB-C port next to the power button. For the other Jetson developer kits, use the micro USB port.
+* For the NVIDIA Jetson AGX Xavier Developer Kit, two USB ports. For serial console access sue the USB-B port to the left of the GPIO expansion header. For flashing, use the USB-C port to the right of the GPIO expansion header. 
+* For the other Jetson developer kits, use the micro USB port.
 
 SHELL SCRIPTS:
 * rcmautomate.sh - issues button presses to put Jetson AGX in Forced Recovery Mode
-* ttyUSB2.sh - connects to Jetson AGX sytem using minicom terminal utility
+* ttyUSB3.sh - connects to Jetson AGX sytem using minicom terminal utility
 * Dependencies: python3, https://github.com/NVIDIA/python-jetson
 
 DOCKERFILES:  <-- see each 'Dockerfile' for build and run instructions

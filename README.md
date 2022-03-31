@@ -18,9 +18,13 @@ DOCKERFILES:  <-- see each 'Dockerfile' for build and run instructions
 * ORDER OF EXECUTION - to flash Jetson AGX to Nvidia L4T software
 1. DockerfileDEVICES - uses jetson-control utils to identify USB attached Jetson AGX
 2. DockerfileRCM - Places USB attached Jetson AGX into recovery mode (for flashing)
-3. DockerfileFACTORY - flashes AGX with NVIDIA Factory Ubuntu bits (installFACTORY.sh)
+3. DockerfileFACTORY - flashes AGX with NVIDIA Factory L4T/Ubuntu bits (CMD installFACTORY.sh)
 * **NOTE:** if DockerFACTORY fails you must go back to Step #1
-* (optional) DockerfileLSUSB - probes USB looking for attached Jetson AGX
+
+ADDITIONAL:
+1. DockerfileUEFI - flashes AGX with NVIDIA experimental UEFI firmware (CMD installUEFI.sh)
+* **NOTE:** this only flashes UEFI firmware and doesn't install an Operating System
+2. DockerfileLSUSB - probes USB looking for attached Jetson AGX
 
 EXTERNAL RESOURCES
 * Nvidia L4T download area  https://developer.nvidia.com/embedded/linux-tegra

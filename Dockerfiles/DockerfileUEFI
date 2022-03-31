@@ -1,0 +1,36 @@
+# Install NVIDIA UEFI experimental firmware for Jetson AGX
+# Requires AGX already be in forced recovery mode
+#   podman build --tag uefi -f ./DockerfileUEFI
+#   podman run --rm -it -v /dev:/dev --device-cgroup-rule='c 188:* rmw' --privileged uefi
+# *Sample output*
+# < to be added >
+#########################################################
+FROM ubuntu:18.04
+
+# install usbutils, git and qemu-user-static 
+# binfmt-support, python3, xdd
+RUN apt-get update -y && apt-get install -y \ 
+  usbutils \
+  wget \
+  qemu-user-static \
+  binfmt-support \
+  python3\
+  xxd \
+  cpio \
+  binutils \
+  openssh-client \
+  libgetopt-complete-perl
+
+# Script verifies AGX is in RCM, then downloads and installs NVIDIA Software
+ADD installUEFI.sh /
+RUN chmod +x /installUEFI.sh
+
+# Required for flash.sh which is called within ./installUEFI.sh 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+ENV USER=root
+
+# Execute the container script
+CMD echo "Verifying AGX is in forced recovery mode" && \
+  echo " and then installing NVIDIA UEFI firmware" && \
+  cd / && \
+  /installUEFI.sh

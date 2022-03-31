@@ -4,6 +4,12 @@
 
 port="/dev/ttyUSB3"
 
+# check if minicom is installed
+if ! command -v minicom &> /dev/null; then
+    echo "minicom not found, exiting"
+    exit 1
+fi
+
 # check if port exists (character device)
 if [ -c "$port" ]; then
     echo "$port exists, continuing..."

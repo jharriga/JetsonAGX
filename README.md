@@ -14,17 +14,17 @@ SHELL SCRIPTS:
 * ttyUSB3.sh - connects to Jetson AGX sytem using minicom terminal utility
 * Dependencies: python3, https://github.com/NVIDIA/python-jetson
 
-DOCKERFILES:  <-- see each 'Dockerfile' for build and run instructions
+JETPACK DOCKERFILES:  <-- see each 'Dockerfile' for build and run instructions
 * ORDER OF EXECUTION - to flash Jetson AGX to Nvidia L4T software
-1. DockerfileDEVICES - uses jetson-control utils to identify USB attached Jetson AGX
-2. DockerfileRCM_JETPACK - Places USB attached Jetson AGX into recovery mode (for flashing)
-3. DockerfileJETPACK'version' - flashes AGX with NVIDIA Factory L4T/Ubuntu bits (CMD installJETPACK'version'.sh)
+1. DockerfileRCM_JETPACK - Places USB attached Jetson AGX into recovery mode (for flashing)
+2. DockerfileJETPACK'version' - flashes AGX with NVIDIA Factory L4T/Ubuntu bits (CMD installJETPACK'version'.sh)
 * **NOTE:** if DockerJETPACK'version' fails you must go back to Step #1
 
-ADDITIONAL:
-1. DockerfileUEFI - flashes AGX with NVIDIA experimental UEFI firmware (CMD installUEFI.sh)
+ADDITIONAL UTILITIES:
+1. Utils/DockerfileUEFI - flashes AGX with NVIDIA experimental UEFI firmware (CMD installUEFI.sh)
 * **NOTE:** this only flashes UEFI firmware and doesn't install an Operating System
-2. DockerfileLSUSB - probes USB looking for attached Jetson AGX
+2. Utils/DockerfileLSUSB - probes USB looking for attached Jetson AGX
+3. Utils/DockerfileDEVICES - uses jetson-control utils to identify USB attached Jetson AGX
 
 EXTERNAL RESOURCES
 * Nvidia L4T download area  https://developer.nvidia.com/embedded/linux-tegra

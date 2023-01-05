@@ -1,7 +1,7 @@
 # Reinstall NVIDIA AGX Factory JetPack software (Ubuntu 18.04)
 # Requires AGX already be in forced recovery mode
-#   podman build --tag factory -f ./DockerfileFACTORY
-#   podman run --rm -it -v /dev:/dev --device-cgroup-rule='c 188:* rmw' --privileged factory
+#   podman build --tag jp46 -f ./DockerfileJETPACK4_6
+#   podman run --rm -it -v /dev:/dev --device-cgroup-rule='c 188:* rmw' --privileged jp46
 # *Sample output*
 # [ 324.0653 ] 
 # *** The target t186ref has been flashed successfully. ***
@@ -24,8 +24,8 @@ RUN apt-get update -y && apt-get install -y \
   libgetopt-complete-perl
 
 # Script verifies AGX is in RCM, then downloads and installs NVIDIA L4T Factory Software
-ADD installFACTORY.sh /
-RUN chmod +x /installFACTORY.sh
+ADD installJETPACK4_6.sh /
+RUN chmod +x /installJETPACK4_6.sh
 
 # Required for flash.sh which is called within ./installFACTORY.sh 
 RUN ln -s /usr/bin/python3 /usr/bin/python
@@ -35,4 +35,4 @@ ENV USER=root
 CMD echo "Verifying AGX is in forced recovery mode" && \
   echo " and then installing NVIDIA L4T factory software" && \
   cd / && \
-  /installFACTORY.sh
+  /installJETPACK4_6.sh

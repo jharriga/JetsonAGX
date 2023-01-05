@@ -1,0 +1,43 @@
+# Reinstall NVIDIA AGX Factory JetPack software (Ubuntu 18.04)
+# Requires AGX already be in forced recovery mode
+#   podman build --tag jp502 -f ./DockerfileJETPACK5_0_2
+#   podman run --rm -it -v /dev:/dev --device-cgroup-rule='c 188:* rmw' --privileged jp502
+# *Sample output*
+# [ 324.0653 ] 
+# *** The target t186ref has been flashed successfully. ***
+# Reset the board to boot from internal eMMC.
+#########################################################
+FROM ubuntu:18.04
+
+# install usbutils, git and qemu-user-static 
+# binfmt-support, python3, xdd
+# For R35.1 added: python3-pip and liblz4-tool
+RUN apt-get update -y && apt-get install -y \ 
+  usbutils \
+  wget \
+  qemu-user-static \
+  binfmt-support \
+  python3 \
+  python3-pip \
+  liblz4-tool \
+  xxd \
+  cpio \
+  binutils \
+  openssh-client \
+  libgetopt-complete-perl
+# For R35.1 added: install PYYAML module
+RUN pip3 install pyyaml
+
+# Script verifies AGX is in RCM, then downloads and installs NVIDIA L4T Factory Software
+ADD installJETPACK5_0_2.sh /
+RUN chmod +x /installJETPACK5_0_2.sh
+
+# Required for flash.sh which is called within ./installJETPACK.sh 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+ENV USER=root
+
+# Execute the container script
+CMD echo "Verifying AGX is in forced recovery mode" && \
+  echo " and then installing NVIDIA L4T factory software" && \
+  cd / && \
+  /installJETPACK5_0_2.sh

@@ -1,7 +1,7 @@
 # Put AGX in forced recovery mode to allow flashing firmware
 # USAGE:
-#   podman build --tag rcm -f ./DockerfileRCM
-#   podman run -it --privileged rcm
+#   podman build --tag rcm_jetpack -f ./DockerfileRCM_JETPACK
+#   podman run -it --privileged rcm_jetpack
 # OUTPUT:
 #   Performing 'git pull' of latest JetsonAGX/rcmautomate.sh
 #   Executing /JetsonAGX/rcmautomate.sh script
